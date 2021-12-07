@@ -27,7 +27,11 @@ typedef struct node{
   printf("%d ->",root->data);
   display(root->right);}
   
-  void delete(node * root,int key){
+  node * findmin(node * root){
+      while(root->left!=NULL){root=root->left;}
+      return root;}
+  
+  node * delete(node * root,int key){
   if(root==NULL){
    return root;}
   else if(root->data>key){
@@ -49,12 +53,10 @@ typedef struct node{
        else{
         struct node *temp=findmin(root->right);
         root->data=temp->data;
-        root->right=delete(root->right,temp->data;}
+        root->right=delete(root->right,temp->data);}
         }
         return root;} 
-  mode * findmin(node * root){
-      while(root->left!=NULL){root=root->left;}
-      return root;}
+ 
   
   int main(){
   node * root =NULL;
@@ -64,5 +66,6 @@ typedef struct node{
    insertion(&root,4);
    insertion(&root,2);
    insertion(&root,3);
+   root=delete(root,4);
    display(root);
   }

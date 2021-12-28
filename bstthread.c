@@ -15,7 +15,6 @@ void successor(node * root){
      }
      root->right_thread=1;
      }
-   
 
 node * insert(node * root,int data){
      if(root==NULL){
@@ -30,7 +29,8 @@ node * insert(node * root,int data){
           successor(root->left);
           }    
      else if(data>root->data){
-          root->right=insert(root->right,data);} 
+          root->right=insert(root->right,data);
+          root->right_thread=0;}
      return root;}
 void display(node * root){
       if(root==NULL){
